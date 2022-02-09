@@ -8,27 +8,25 @@ public class DBConnection {
 		String url = "jdbc:mysql://localhost:3306/" + BDD;
 		String user = "root";
 		String passwd = "";
-	    private Connection conn;
-    //creation d'un attribut statique, sa valeur est une instance privée de la classe     
-	    private static DBConnection instance;
+		//QST 2 : 
+		//creation of a static attribute , his value is a private instance of this class
+	    private static Connection conn;
+       
+	  
     //QST 2 :
-    // Creation d'un constructeur de visibilité privée
+    // Creation d'un constructor of private visibility 
 	    private DBConnection() {}
+	
 	    
-	//creation de la methode getinstance où on va intancier cette dernière
-	    public static DBConnection getInstance() {
-	    	if(instance==null) {
-	    		instance=new DBConnection();
-	    	}
-	    	return instance;
-	    }
 	    
-	    public DBConnection() throws SQLException {
+	    public  void DBConnection1() throws SQLException {
 			conn=DriverManager.getConnection(url, user,passwd);
 		}
 
-	    
-	    public Connection getConn() {
+	  //QST 2 :   
+		//creation of method getConn where we will instantiate this instance
+	    public static Connection getConn() {
+	    	
 			return conn;
 		}
 
